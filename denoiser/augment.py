@@ -71,7 +71,7 @@ class RevEcho(nn.Module):
     """
 
     def __init__(self, proba=0.5, initial=0.3, rt60=(0.3, 1.3), first_delay=(0.01, 0.03),
-                 repeat=3, jitter=0.1, keep_clean=0.1, sample_rate=16000):
+                 repeat=3, jitter=0.1, keep_clean=0.1, sample_rate=24000):
         super().__init__()
         self.proba = proba
         self.initial = initial
@@ -137,7 +137,7 @@ class BandMask(nn.Module):
     (https://arxiv.org/pdf/1904.08779.pdf) but over the waveform.
     """
 
-    def __init__(self, maxwidth=0.2, bands=120, sample_rate=16_000):
+    def __init__(self, maxwidth=0.2, bands=120, sample_rate=24000):
         """__init__.
 
         :param maxwidth: the maximum width to remove

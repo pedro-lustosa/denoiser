@@ -12,6 +12,16 @@ import os
 import hydra
 
 from denoiser.executor import start_ddp_workers
+#from GPUtil import showUtilization as gpu_usage
+import torch
+from numba import cuda
+
+cuda.select_device(0)
+cuda.close()
+cuda.select_device(0)
+
+#gpu_usage()
+torch.cuda.empty_cache()
 
 logger = logging.getLogger(__name__)
 

@@ -4,7 +4,7 @@ defaults:
   - hydra/hydra_logging: colorlog
 
 # Dataset related
-sample_rate: 16000
+sample_rate: 44100
 segment: 4
 stride: 1    # in seconds, how much to stride between training examples
 pad: true   # if training sample is too short, pad it
@@ -55,8 +55,9 @@ loss: l1
 stft_loss: False
 stft_sc_factor: .5
 stft_mag_factor: .5
-epochs: 500
-batch_size: 64
+epochs: 800
+batch_size: 70
+# 64
 
 # Models
 model: demucs # either demucs or dwave

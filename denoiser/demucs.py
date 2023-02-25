@@ -86,7 +86,7 @@ class Demucs(nn.Module):
                  glu=True,
                  rescale=0.1,
                  floor=1e-3,
-                 sample_rate=16_000):
+                 sample_rate=24_000):
 
         super().__init__()
         if resample not in [1, 2, 4]:
@@ -273,12 +273,9 @@ class DemucsStreamer:
 
     def flush(self):
         """
-        Flush remaining audio by padding it with zero and initialize the previous
-        status. Call this when you have no more input and want to get back the last
-        chunk of audio.
+        Flush remaining audio by padding it with zero. Call this
+        when you have no more input and want to get back the last chunk of audio.
         """
-        self.lstm_state = None
-        self.conv_state = None
         pending_length = self.pending.shape[1]
         padding = th.zeros(self.demucs.chin, self.total_length, device=self.pending.device)
         out = self.feed(padding)
@@ -426,7 +423,7 @@ def test():
     parser.add_argument("--depth", default=5, type=int)
     parser.add_argument("--resample", default=4, type=int)
     parser.add_argument("--hidden", default=48, type=int)
-    parser.add_argument("--sample_rate", default=16000, type=float)
+    parser.add_argument("--sample_rate", default=24000, type=float)
     parser.add_argument("--device", default="cpu")
     parser.add_argument("-t", "--num_threads", type=int)
     parser.add_argument("-f", "--num_frames", type=int, default=1)

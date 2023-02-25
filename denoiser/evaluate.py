@@ -39,7 +39,6 @@ def evaluate(args, model=None, data_loader=None):
     total_stoi = 0
     total_cnt = 0
     updates = 5
-
     # Load model
     if not model:
         model = pretrained.get_model(args).to(args.device)
@@ -89,7 +88,8 @@ def _run_metrics(clean, estimate, args, sr):
     estimate = estimate.numpy()[:, 0]
     clean = clean.numpy()[:, 0]
     if args.pesq:
-        pesq_i = get_pesq(clean, estimate, sr=sr)
+        #pesq_i = get_pesq(clean, estimate, sr=sr)
+        pesq_i = 0
     else:
         pesq_i = 0
     stoi_i = get_stoi(clean, estimate, sr=sr)

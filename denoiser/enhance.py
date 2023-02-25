@@ -69,7 +69,7 @@ def get_estimate(model, noisy, args):
     return estimate
 
 
-def save_wavs(estimates, noisy_sigs, filenames, out_dir, sr=16_000):
+def save_wavs(estimates, noisy_sigs, filenames, out_dir, sr=24_000):
     # Write result
     for estimate, noisy, filename in zip(estimates, noisy_sigs, filenames):
         filename = os.path.join(out_dir, os.path.basename(filename).rsplit(".", 1)[0])
@@ -77,7 +77,7 @@ def save_wavs(estimates, noisy_sigs, filenames, out_dir, sr=16_000):
         write(estimate, filename + "_enhanced.wav", sr=sr)
 
 
-def write(wav, filename, sr=16_000):
+def write(wav, filename, sr=24_000):
     # Normalize audio if it prevents clipping
     wav = wav / max(wav.abs().max().item(), 1)
     torchaudio.save(filename, wav.cpu(), sr)
