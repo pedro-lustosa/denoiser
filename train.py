@@ -25,7 +25,6 @@ torch.cuda.empty_cache()
 
 logger = logging.getLogger(__name__)
 
-
 def run(args):
     import torch
 
