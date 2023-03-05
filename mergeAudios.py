@@ -1,10 +1,10 @@
 import os
 from pydub import AudioSegment
 
-WRITE_INPUT_DIRECTORY='./debug/noisy/'
-WRITE_OUTPUT_DIRECTORY='./debug/clean_posprocessed/'
-READ_INSTRUMENTAL_DIRECTORY='./debug/instrumental/'
-READ_VOICE_DIRECTORY='./debug/clean/'
+WRITE_INPUT_DIRECTORY='./dataset/debug/noisy/'
+WRITE_OUTPUT_DIRECTORY='./dataset/debug/clean_posprocessed/'
+READ_INSTRUMENTAL_DIRECTORY='./dataset/debug/instrumental/'
+READ_VOICE_DIRECTORY='./dataset/debug/clean/'
 
 instrumental_files=os.listdir(READ_INSTRUMENTAL_DIRECTORY)
 instrumental_files.sort()

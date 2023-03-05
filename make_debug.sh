@@ -10,5 +10,6 @@ path=egs/debug/tr
 if [[ ! -e $path ]]; then
     mkdir -p $path
 fi
+echo TUZEEEEEE
 python3 -m denoiser.audio dataset/debug/noisy > $path/noisy.json
 python3 -m denoiser.audio dataset/debug/clean_posprocessed > $path/clean.json
