@@ -31,12 +31,12 @@ for i in instrumental_files:
         try:
             outputAudio[1].export(WRITE_OUTPUT_DIRECTORY + v[:-4] + i[:-4] + 'RIGHT.wav', format="wav")
             inputAudio[1].export(WRITE_INPUT_DIRECTORY + v[:-4] + i[:-4] + 'RIGHT.wav', format="wav")
-        total, used, free = shutil.disk_usage("/")
-        free = free // (2**30)
-        if free <= 110:
-            break
         except:
             pass
+        total, used, free = shutil.disk_usage("/")
+        free = free // (2 ** 30)
+        if free <= 110:
+            break
 
 files=os.listdir(WRITE_INPUT_DIRECTORY)
 files.sort()
