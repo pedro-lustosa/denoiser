@@ -1,5 +1,6 @@
 import os
 from pydub import AudioSegment
+import shutil
 
 WRITE_INPUT_DIRECTORY='./dataset/debug/noisy/'
 WRITE_OUTPUT_DIRECTORY='./dataset/debug/clean_posprocessed/'
@@ -30,6 +31,10 @@ for i in instrumental_files:
         try:
             outputAudio[1].export(WRITE_OUTPUT_DIRECTORY + v[:-4] + i[:-4] + 'RIGHT.wav', format="wav")
             inputAudio[1].export(WRITE_INPUT_DIRECTORY + v[:-4] + i[:-4] + 'RIGHT.wav', format="wav")
+        total, used, free = shutil.disk_usage("/")
+        free = free // (2**30)
+        if free <= 50:
+            break
         except:
             pass
 
